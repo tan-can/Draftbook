@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  streak: 1
+  best_streak: 1
+  last_done_on: 2026-09-24
+
+two:
+  name: MyString
+  streak: 1
+  best_streak: 1
+  last_done_on: 2026-09-24

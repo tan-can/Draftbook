@@ -1,0 +1,55 @@
+<div class="min-h-screen bg-rose-50/40 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8 bg-white/90 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-pink-100 shadow-xl shadow-pink-100/60 relative overflow-hidden">
+    
+    <!-- Decorative Glow Effects -->
+    <div class="absolute -right-10 -top-10 w-40 h-40 bg-pink-300/30 rounded-full blur-2xl pointer-events-none"></div>
+    <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-fuchsia-300/30 rounded-full blur-2xl pointer-events-none"></div>
+
+    <div class="relative z-10">
+      <!-- Header -->
+      <div class="text-center space-y-2">
+        <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-400 text-white text-2xl shadow-md shadow-pink-200 mb-2">
+          ✨
+        </div>
+        <h2 class="text-3xl font-black text-slate-800 tracking-tight">Welcome Back!</h2>
+        <p class="text-xs font-semibold text-pink-400 uppercase tracking-wider">Sign in to your Whimsy account</p>
+      </div>
+
+      <!-- Flash Alert Message -->
+      <% if alert = flash[:alert] %>
+        <div class="mt-4 p-3 rounded-xl bg-pink-50 border border-pink-200 text-pink-700 text-xs font-medium text-center">
+          <%= alert %>
+        </div>
+      <% end %>
+
+      <!-- Sign In Form -->
+      <%= form_with url: session_url, class: "mt-8 space-y-5" do |form| %>
+        <div>
+          <%= form.label :email_address, "Email Address", class: "block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2" %>
+          <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "you@example.com", value: params[:email_address], class: "w-full px-4 py-3.5 rounded-2xl bg-slate-50 border border-pink-100 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-pink-400 focus:bg-white transition-all duration-200 shadow-sm" %>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <%= form.label :password, "Password", class: "block text-xs font-bold text-slate-600 uppercase tracking-wider" %>
+            <%= link_to "Forgot password?", new_password_path, class: "text-xs font-semibold text-pink-500 hover:text-pink-600 transition-colors" %>
+          </div>
+          <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "••••••••", class: "w-full px-4 py-3.5 rounded-2xl bg-slate-50 border border-pink-100 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-pink-400 focus:bg-white transition-all duration-200 shadow-sm" %>
+        </div>
+
+        <div class="pt-2">
+          <%= form.submit "Sign In ✨", class: "w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-pink-500 via-rose-500 to-fuchsia-500 hover:from-pink-600 hover:to-fuchsia-600 text-white font-bold text-sm shadow-md shadow-pink-200 hover:shadow-lg transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer" %>
+        </div>
+      <% end %>
+
+      <!-- Footer Navigation Link -->
+      <div class="mt-6 text-center pt-5 border-t border-pink-100">
+        <p class="text-xs text-slate-500 font-medium">
+          Don't have an account? 
+          <%= link_to "Sign up now", new_registration_path, class: "font-bold text-pink-600 hover:text-pink-700 hover:underline transition-all" %>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>

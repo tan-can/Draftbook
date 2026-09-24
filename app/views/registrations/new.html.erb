@@ -1,0 +1,35 @@
+
+<div class="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
+  <h1 class="font-bold text-4xl mb-6">Sign up</h1>
+
+  <%= form_with model: @user, url: registration_path, class: "contents" do |form| %>
+    <% if @user.errors.any? %>
+      <div class="mb-4 text-red-600 text-sm">
+        <%= @user.errors.full_messages.to_sentence %>
+      </div>
+    <% end %>
+
+    <div class="my-5">
+      <%= form.label :email_address, "Email Address", class: "block font-medium" %>
+      <%= form.email_field :email_address, required: true, autofocus: true, placeholder: "Enter your email address", class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
+    </div>
+
+    <div class="my-5">
+      <%= form.label :password, "Password", class: "block font-medium" %>
+      <%= form.password_field :password, required: true, placeholder: "Enter your password", class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
+    </div>
+
+    <div class="my-5">
+      <%= form.label :password_confirmation, "Confirm Password", class: "block font-medium" %>
+      <%= form.password_field :password_confirmation, required: true, placeholder: "Confirm your password", class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
+    </div>
+
+    <div class="my-5">
+      <%= form.submit "Sign up", class: "w-full rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer hover:bg-blue-700" %>
+    </div>
+  <% end %>
+
+  <div class="mt-4 text-center">
+    <%= link_to "Already have an account? Sign in", new_session_path, class: "text-blue-600 underline text-sm" %>
+  </div>
+</div>
